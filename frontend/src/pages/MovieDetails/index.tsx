@@ -1,11 +1,12 @@
 import './styles.css';
 import { useEffect, useState } from 'react';
 import  { AxiosRequestConfig } from 'axios';
-import { hasAnyRoles, requestBackend } from '../../util/requests/requests';
+import { requestBackend } from '../../util/requests';
 import { useParams } from 'react-router-dom';
 import { Review } from '../../types/review';
 import MovieReviews from '../../components/MovieReviews';
 import ReviewForm from '../../components/ReviewForm';
+import { hasAnyRoles } from '../../util/auth';
 
 type urlParams = {
     movieId: string;

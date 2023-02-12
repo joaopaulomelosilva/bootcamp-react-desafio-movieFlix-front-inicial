@@ -9,11 +9,12 @@ type Props = {
 const MovieReviews = ( {reviews} : Props) => {
 
     return( 
-        <div className='assessments-container'>
-                {reviews.map((review => {
-                    return(
-                        <>
-                        <div className='name-container'>
+        <>
+        {reviews.map(((review, index) => {
+        
+                return(
+                    <div className='assessments-container' key={index}>
+                        <div className='name-container' >
                             <StarImage></StarImage>
                         <h3>{review.user.name}</h3>
                         </div>
@@ -22,11 +23,10 @@ const MovieReviews = ( {reviews} : Props) => {
                                 <p>{review.text}</p>
                             </div>
                         </div>
-                    </>
-                    )
+                    </div>
+                )
                 }))}
-                    
-            </div>
+        </>
     );
 }
 

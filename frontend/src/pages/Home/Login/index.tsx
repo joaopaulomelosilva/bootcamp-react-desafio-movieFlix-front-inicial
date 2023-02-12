@@ -1,9 +1,10 @@
-
 import { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../../AuthContext';
-import { getTokenData, requestBackendLogin, saveAuthData } from '../../../util/requests/requests';
+import { getTokenData } from '../../../util/auth';
+import { requestBackendLogin } from '../../../util/requests';
+import { saveAuthData } from '../../../util/storage';
 import './styles.css';
 
 type FormData = {

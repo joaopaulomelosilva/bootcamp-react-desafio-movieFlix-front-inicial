@@ -1,8 +1,9 @@
 import { useContext, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../AuthContext';
+import { getTokenData, isAuthenticated } from '../../util/auth';
 import history from '../../util/history';
-import { getTokenData, isAuthenticated, removeAuthData } from '../../util/requests/requests';
+import { removeAuthData } from '../../util/storage';
 import './styles.css';
 
 const Navbar = () => {
@@ -41,7 +42,7 @@ const Navbar = () => {
             { authContextData.authenticated && 
                 <>
                     <span>{authContextData.tokenData?.user_name}</span>
-                    <button onClick={handleLogoutClick}>LOGOUT</button>
+                    <button onClick={handleLogoutClick}>SAIR</button>
                 </>
             }
         </nav>

@@ -1,7 +1,6 @@
-
 import './styles.css';
 import { Movie } from '../../types/movie';
-import { requestBackend } from '../../util/requests/requests';
+import { requestBackend } from '../../util/requests';
 import { useEffect, useState } from 'react';
 import { SpringPage } from '../../types/vendor/spring';
 import MovieCard from '../../components/MovieCard';
@@ -19,7 +18,7 @@ const Movies = () => {
             withCredentials: true,
             params: {
                 page: 0,
-                size: 12
+                size: 2
             },
         }
 
@@ -29,17 +28,13 @@ const Movies = () => {
         });
     }, []);
 
-    
-
     return (
         <main className='movies-container'>
             <h1>Tela listagem de filmes</h1>
             {page?.content.map((movie) => (
-
                 <div className='movies-content' key={movie.id}>
                     <MovieCard id={movie.id}></MovieCard>
                 </div>
-
             ))}
         </main>
     );

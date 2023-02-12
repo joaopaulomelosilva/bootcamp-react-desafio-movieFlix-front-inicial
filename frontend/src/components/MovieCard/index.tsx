@@ -8,7 +8,10 @@ type Props = {
 const MovieCard = ( { id } : Props) => {
 
     return(
-        <Link to={'movies/' + id}><p>Acessar/movies/{id}</p></Link>
+        <div className='movie-card-conteiner'>
+            <Link to={'movies/' + id}><p>Acessar/movies/{id}</p></Link>
+        </div>
+        
     );
 }
 

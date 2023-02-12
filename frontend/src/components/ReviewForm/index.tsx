@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 import { useForm } from 'react-hook-form';
 import { Review } from '../../types/review';
-import { requestBackend } from '../../util/requests/requests';
+import { requestBackend } from '../../util/requests';
 import './styles.css';
 
 type Props = {

@@ -1,0 +1,7 @@
+.movie-card-conteiner a{
+    text-decoration: none;
+}
+
+.movie-card-conteiner a:hover{
+    cursor: pointer;
+}
