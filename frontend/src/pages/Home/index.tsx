@@ -1,5 +1,6 @@
 import './styles.css';
 import  { ReactComponent as ImageHome }  from '../../assets/images/Desenho.svg';
+import Login from './Login';
 
 
 const Home = () => {
@@ -13,14 +14,7 @@ const Home = () => {
 
                 <ImageHome></ImageHome>
             </div>
-            <div className='login-container'>
-                <h1>Login</h1>
-                <form action="" className='form-content'>
-                    <input type="text" placeholder='Email'/>
-                    <input type="text" placeholder='Senha'/>
-                    <button>Fazer Login</button>
-                </form>
-            </div>
+            <Login></Login>
         </main>
     );
 }
