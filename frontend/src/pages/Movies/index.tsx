@@ -6,6 +6,7 @@ import { SpringPage } from '../../types/vendor/spring';
 import MovieCard from '../../components/MovieCard';
 import { AxiosRequestConfig } from 'axios';
 
+
 const Movies = () => {
 
     const [page, setPage] = useState<SpringPage<Movie>>();
@@ -18,7 +19,7 @@ const Movies = () => {
             withCredentials: true,
             params: {
                 page: 0,
-                size: 2
+                size: 2,
             },
         }
 
