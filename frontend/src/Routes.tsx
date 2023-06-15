@@ -3,8 +3,8 @@ import Navbar from "./components/Navbar";
 import PrivateRoute from "./components/PrivateRoute";
 import Home from "./pages/Home";
 import MovieDetails from "./pages/MovieDetails";
-import Movies from "./pages/Movies";
 import historyt from "./util/history";
+import MoviesCatalog from "./pages/MoviesCatalog";
 
 const Routes = () => {
     return (
@@ -16,7 +16,7 @@ const Routes = () => {
                     </Route>
                     <PrivateRoute path="/movies">
                         <Route path="/movies" exact>
-                            <Movies></Movies>
+                            <MoviesCatalog></MoviesCatalog>
                         </Route>
                         <Route path="/movies/:movieId" exact>
                             <MovieDetails></MovieDetails>
