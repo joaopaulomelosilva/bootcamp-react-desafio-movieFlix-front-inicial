@@ -38,12 +38,12 @@ const MoviesCatalog = () => {
 
             <MovieFilter />
 
-            <div className="row w-100 d-flex justify-content-center">
+            <div className="row w-100 d-flex justify-content-between">
 
                 {page?.content.map((movie) => (
 
-                <div className="col-sm-6 col-xl-3">
-                    <div className='movies-content' key={movie.id}>
+                <div className="col-sm-6 col-xl-3 p-0" key={movie.id}>
+                    <div className='movies-content'>
                         <MovieCard id={movie.id} name={movie.title} year={movie.year} subTitle={ (movie.subTitle) ? movie.subTitle : "SubTitle"} imgUrl={movie.imgUrl}></MovieCard>
                     </div>
                 </div>
@@ -51,9 +51,9 @@ const MoviesCatalog = () => {
 
             </div>
             <Pagination 
-            pageCount={ (page) ? page.totalPages : 0} 
-            range={3}
-            onChange={getMovies}
+                pageCount={ (page) ? page.totalPages : 0} 
+                range={3}
+                onChange={getMovies}
             ></Pagination>
         </main>
     );
