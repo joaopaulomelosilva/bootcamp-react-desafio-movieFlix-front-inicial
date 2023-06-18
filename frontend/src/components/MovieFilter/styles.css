@@ -15,27 +15,6 @@
     padding: 5px 20px;
 }
 
-
-.movie-filter-container select{
-    border: 1px solid #E1E1E1;
-    border-radius: 4px;
-
-    height: 100%;
-    width: 100%;
-
-    background-color: #6C6C6C;
-
-    padding: 4px 40px 4px 10px;
-
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 22px;
-    letter-spacing: -0.015em;
-
-    color: #FFFFFF;
-
-}
-
 .movie-filter-container-select__control{
 
     border: 1px solid #E1E1E1 !important;
@@ -46,7 +25,7 @@
 
     background-color: #6C6C6C !important;
 
-    padding: 4px 40px 4px 10px !important;
+    padding: 4px 10px 4px 10px !important;
 
     
 }
@@ -65,9 +44,17 @@
 
 }
 
+.movie-filter-container-select__single-value{
+    color: #FFFFFF!important;
+}
 
+.movie-filter-container-select__indicator{
+    color: #FFFFFF!important;
+}
 
-
+.css-b62m3t-container{
+    width: 100%;
+}
 
 
 
@@ -76,7 +63,13 @@
 
 
 @media (min-width: 576px){
-    
+    .css-b62m3t-container{
+        width: 260px;
+    }
+
+    .movie-filter-container{
+        justify-content: flex-start;
+    }
 }
 
 @media (min-width: 768px){

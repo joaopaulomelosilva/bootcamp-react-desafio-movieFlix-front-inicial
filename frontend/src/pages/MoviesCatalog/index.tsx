@@ -1,25 +1,46 @@
 import './styles.css';
 import { Movie } from '../../types/movie';
 import { requestBackend } from '../../util/requests';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { SpringPage } from '../../types/vendor/spring';
 import MovieCard from '../../components/MovieCard';
 import { AxiosRequestConfig } from 'axios';
 import Pagination from '../../components/Pagination';
-import MovieFilter from '../../components/MovieFilter';
+import MovieFilter, { GenreFilterData } from '../../components/MovieFilter';
+
+type ControlComponentsData = {
+    activePage: number;
+    filterGenreData: GenreFilterData;
+}
 
 const MoviesCatalog = () => {
 
     const [page, setPage] = useState<SpringPage<Movie>>();
 
-    const getMovies = (pageNumber: number) => {
+    const [controlComponentsData, setControlComponentsData] = useState<ControlComponentsData>(
+        {
+            activePage: 0,
+            filterGenreData: {genre: null}
+        }
+    );
+
+    const handlePageChange = (pageNumber: number) => {
+        setControlComponentsData({activePage: pageNumber, filterGenreData: controlComponentsData.filterGenreData});
+    };
+
+    const handleSubmitFilter = (data : GenreFilterData) => {
+        setControlComponentsData({activePage: 0, filterGenreData: data});
+    };
+
+    const getMovies = useCallback(() => {
         const params : AxiosRequestConfig = {
             method: 'GET',
             url: `/movies`,
             withCredentials: true,
             params: {
-                page: pageNumber,
+                page: controlComponentsData.activePage,
                 size: 4,
+                genreId: controlComponentsData.filterGenreData.genre?.id
             },
         }
 
@@ -27,16 +48,16 @@ const MoviesCatalog = () => {
         .then(response => {
             setPage(response.data);
         });
-    }
+    } , [controlComponentsData]);
     
     useEffect(() => {
-        getMovies(0);
-    }, []);
+        getMovies();
+    }, [getMovies]);
 
     return (
         <main className='movies-container container'>
 
-            <MovieFilter />
+            <MovieFilter onSubmitFilter={handleSubmitFilter} />
 
             <div className="row w-100 d-flex justify-content-between">
 
@@ -53,7 +74,7 @@ const MoviesCatalog = () => {
             <Pagination 
                 pageCount={ (page) ? page.totalPages : 0} 
                 range={3}
-                onChange={getMovies}
+                onChange={handlePageChange}
             ></Pagination>
         </main>
     );
