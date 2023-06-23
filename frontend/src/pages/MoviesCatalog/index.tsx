@@ -47,7 +47,10 @@ const MoviesCatalog = () => {
         requestBackend(params)
         .then(response => {
             setPage(response.data);
-        });
+        }).catch(error => {
+            console.error(error);
+        }
+    );
     } , [controlComponentsData]);
     
     useEffect(() => {

@@ -51,17 +51,23 @@ export const ReviewForm = ({ movieId, onInsertReview } : Props) => {
     return(
         <div className='valuation-container'>
             <form onSubmit={handleSubmit(onSubmit)} className='form-container'>
-                <input 
+            <input 
                 {...register("text", {
                     required: 'Campo Obrigatório',
                     pattern: {
-                        value: /^(?!\s*$)[\s\S]*$/,
-                        message: 'Comentário inválido!'
+                    value: /^(?!\s*$)[\s\S]*$/,
+                    message: 'Comentário inválido!',
                     }
                 })}
                 type="text" 
                 className={`${errors.text ? 'form-control is-invalid' : ''}`}
-                placeholder='Deixe sua avaliação aqui' />
+                placeholder='Deixe sua avaliação aqui'
+                onBlur={() => {
+                    if (errors.text) {
+                    toast.error(errors.text.message, { position: toast.POSITION.TOP_RIGHT });
+                    }
+                }}
+                />
                 <button type='submit'>Salvar Avaliação</button>
             </form>
         </div>
