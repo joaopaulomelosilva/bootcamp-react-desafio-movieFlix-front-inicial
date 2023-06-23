@@ -9,3 +9,4 @@ export type Movie = {
     synopsis: string,
     genre: Genre
 }
+

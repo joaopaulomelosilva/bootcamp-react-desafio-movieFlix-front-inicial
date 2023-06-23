@@ -53,7 +53,11 @@ export const ReviewForm = ({ movieId, onInsertReview } : Props) => {
             <form onSubmit={handleSubmit(onSubmit)} className='form-container'>
                 <input 
                 {...register("text", {
-                    required: 'Campo Obrigatório'
+                    required: 'Campo Obrigatório',
+                    pattern: {
+                        value: /^(?!\s*$)[\s\S]*$/,
+                        message: 'Comentário inválido!'
+                    }
                 })}
                 type="text" 
                 className={`${errors.text ? 'form-control is-invalid' : ''}`}

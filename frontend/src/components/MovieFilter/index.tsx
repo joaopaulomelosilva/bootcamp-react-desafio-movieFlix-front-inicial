@@ -38,7 +38,10 @@ const MovieFilter = ( {onSubmitFilter} : Props ) => {
         requestBackend({url: '/genres', withCredentials: true})
         .then(response => {
             setSelectGenres(response.data);
-        })
+        }).catch(error => {
+            console.error(error);
+        }
+    );
     }, []);
 
     return(

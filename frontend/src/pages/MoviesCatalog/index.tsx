@@ -59,7 +59,7 @@ const MoviesCatalog = () => {
 
             <MovieFilter onSubmitFilter={handleSubmitFilter} />
 
-            <div className="row w-100 d-flex justify-content-between">
+            <div className="row w-100 d-flex">
 
                 {page?.content.map((movie) => (
 

@@ -32,7 +32,10 @@ const MovieDetails = () => {
         requestBackend(params)
             .then( response => {
                 setMovie(response.data);
-        })
+        }).catch(error => {
+            console.error(error);
+        }
+    );
 
     }, [movieId]);
 
