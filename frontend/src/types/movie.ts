@@ -1,5 +1,4 @@
-import { Genre } from "./Genre"
-
+import { Genre } from "./genre";
 
 export type Movie = {
     id: number,

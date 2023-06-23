@@ -1,12 +1,14 @@
+import './styles.css';
 import { AxiosRequestConfig } from 'axios';
 import { useForm } from 'react-hook-form';
 import { Review } from '../../types/review';
 import { requestBackend } from '../../util/requests';
-import './styles.css';
+import { toast} from 'react-toastify';
 
 type Props = {
     movieId: string;
     onInsertReview: (review: Review) => void;
+    onReloadReviews: Function;
 }
 
 type FormData = {
@@ -38,9 +40,10 @@ export const ReviewForm = ({ movieId, onInsertReview } : Props) => {
         .then(response => {
             setValue('text', '');
             onInsertReview(response.data);
+            toast.info("Review Salvo");
         })
         .catch(error => {
-            console.log("Erro", error);
+            toast.error(error);
         });
 
     };
